@@ -2,11 +2,12 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const { DATABASE_URL } = require('./config');
 const helmet = require('helmet');
 const knex = require('knex');
 const { NODE_ENV } = require('./config');
 const gamesRouter = require('./games-router');
-const { DATABASE_URL } = require('./config');
+
 
 const app = express();
 
@@ -23,6 +24,7 @@ const morganOption = (NODE_ENV === 'production')
 
 app.use(morgan(morganOption));
 app.use(helmet());
+
 app.use(cors());
 
 app.use('api/genres', gamesRouter);
