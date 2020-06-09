@@ -27,7 +27,7 @@ app.use(helmet());
 
 app.use(cors());
 
-app.use('api/genres', gamesRouter);
+app.use('/api/genres', gamesRouter);
 
 
 app.get('/', (req, res) => {

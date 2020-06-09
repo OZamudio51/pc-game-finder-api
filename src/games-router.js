@@ -17,7 +17,7 @@ gamesRouter
   const knexInstance = req.app.get('db')
   GamesService.getAllGames(knexInstance)
     .then(game => {
-      res.json(game.map(serializeGame))
+      res.json(game.map(serializeGame));
     })
     .catch(next);
 });
