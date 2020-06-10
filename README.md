@@ -1,26 +1,52 @@
-# Express Boilerplate!
+# Pc Game Finder API
 
-This is a boilerplate project used for starting new projects!
 
-## Set up
+Link to live app: https://pc-game-finder.ozamudio51.now.sh/
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+![Pc Game Finder screenshot](pcGameFinderScreenshot.PNG)
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+An application that finds pc games for you based off of the genre that is chosen. 
+  
+### Back-End
+* PostgreSQL
+* Express
+* Node
+* Knex
 
-## Scripts
+### Testing
+* Mocha
+* Chai
+* Chai-http
+* Jest
 
-Start the application `npm start`
+## API Overview
 
-Start nodemon for the application `npm run dev`
+```text
+/api
+.
+├──── GET
+        ├── /genre
+                ├── /genre/first-person-shooter
+                ├── /genre/survival-horror
+                ├── /genre/action-rpg
+                ├── /genre/third-person-shooter
+                ├── /genre/puzzle
+                ├── /genre/stealth-based
+                ├── /genre/rts
+```
+                
+### GET `/api/genres/`
 
-Run the tests `npm test`
-
-## Deploying
-
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+```js
+// res.body
+{
+  [
+   id: game.id,
+  game_cover: game.game_cover,
+  game_genre: game.game_genre,
+  game_name: game.game_name,
+  game_desc: game.game_desc,
+  game_link: game.game_link,
+  ]
+}
+```
